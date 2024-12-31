@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        label {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: #f00;
+        }
+
+        input {
+            margin-left: 50%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        button {
+            margin-top: 10%;
+            outline: none;
+            width: 60%;
+            padding: 10px;
+            cursor: pointer;
+            background: #000;
+            color: #fff;
+            border-radius: 5px;
+            border: 1px solid #000;
+            margin-left: 12%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="handle_data" method="POST" enctype="multipart/form-data">
+            <label>* Choose first file:</label><br>
+            <input type="file" name="file1"><br>
+            <label>* Choose second file:</label><br>
+            <input type="file" name="file2">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
+
+<!-- 
+from flask import Flask, render_template
+import pandas as pd
+
+app = Flask(__name__)
+f1 = pd.read_excel('file1.xlsx')
+f2 = pd.read_excel('file2.xlsx')
+file1_names = list(f1['names'])
+file2_names = list(f2['names'])
+file3 = file1_names + file2_names
+
+arr = []
+for name in file1_names:
+   for n in file2_names:
+       if name == n: 
+           arr.append(name)
+
+final = []
+for i in file3:
+    if i not in arr:
+        final.append(i)
+
+print(final)
+@app.route("/")
+def hello_world():
+    return render_template('index.html')
+
+# app.run(debug=True) -->
+
+<!-- *** FILE *** -->
+<!-- file = request.files["file1"]                    
+    if file:
+        df = pd.read_excel(file)
+        d = df.to_dict()
+        names = list(d['names'].values()) -->
